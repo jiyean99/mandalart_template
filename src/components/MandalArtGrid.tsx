@@ -7,18 +7,30 @@ interface MandalArtGridProps {
 }
 
 const TitleInput = styled.input`
-  font-size: 24px;
-  padding: 20px;
-  text-align: center;
-  width: 100%;
-  border: none;
-  background: transparent;
-  outline: none;
-  color: inherit;
-  font-family: inherit;
+    font-size: 24px;
+    padding: 20px 0 0 0;
+    text-align: center;
+    width: 100%;
+    border: none;
+    background: transparent;
+    outline: none;
+    color: inherit;
+    font-family: inherit;
+
+    @media (max-width: 768px) {
+        /* 태블릿 및 작은 화면 */
+        padding: 15px 0 0 0;
+        font-size: 18px;
+    }
+
+    @media (max-width: 480px) {
+        /* 모바일 화면 */
+        padding: 8px 0 0 0;
+        font-size: 12px;
+    }
 `;
 
-const MandalArtGrid = ({ skinColor }: MandalArtGridProps) => {
+const MandalArtGrid = ({skinColor}: MandalArtGridProps) => {
     const [title, setTitle] = useState('2025 만다라트 계획표');
     const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setTitle(event.target.value); // 타이틀 입력값 상태 업데이트
@@ -42,12 +54,12 @@ const MandalArtGrid = ({ skinColor }: MandalArtGridProps) => {
     const textColor = getTextColor(skinColor);
 
     // 9x9 메인 그리드의 셀 생성
-    const mainGrid = Array.from({ length: 9 });
+    const mainGrid = Array.from({length: 9});
 
     // 각 셀 내부의 3x3 서브 그리드 생성
-    const subGrid = Array.from({ length: 9 });
+    const subGrid = Array.from({length: 9});
 
-    const LimitedSubCell = ({ placeholder }: { placeholder?: string }) => {
+    const LimitedSubCell = ({placeholder}: { placeholder?: string }) => {
         const [value, setValue] = useState('');
 
         const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -80,7 +92,10 @@ const MandalArtGrid = ({ skinColor }: MandalArtGridProps) => {
                 {mainGrid.map((_, mainIndex) => (
                     <SubGrid key={mainIndex}>
                         {subGrid.map((_, subIndex) => (
-                            <SubCellWrap style={subIndex === 4 ? { color: textColor, backgroundColor: skinColor } : {color: skinColor}}>
+                            <SubCellWrap style={subIndex === 4 ? {
+                                color: textColor,
+                                backgroundColor: skinColor
+                            } : {color: skinColor}}>
                                 <LimitedSubCell
                                     key={`${mainIndex}-${subIndex}`}
                                     placeholder={subIndex === 4 ? `${mainIndex + 1}` : ''}

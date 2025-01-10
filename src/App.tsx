@@ -20,7 +20,7 @@ const App = () => {
                 <ExportButton />
             </HeaderWrap>
 
-            <div id="mandal-art-grid">
+            <div id="mandalart-grid">
                 {/* MandalArtGrid에 skinColor 전달 */}
                 <MandalArtGrid skinColor={skinColor} />
             </div>

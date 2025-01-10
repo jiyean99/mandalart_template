@@ -5,10 +5,29 @@ export const HeaderWrap = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 10px 50px;
+    /* 태블릿 및 작은 화면 */
+    @media (max-width: 768px) {
+        padding: 10px 30px;
+    }
+
+    /* 모바일 화면 */
+    @media (max-width: 480px) {
+        padding: 5px 20px;
+    }
 `;
 
 export const ColorPickerLabel = styled.label`
     font-size: 15px;
+    
+    /* 태블릿 및 작은 화면 */
+    @media (max-width: 768px) {
+        font-size: 10px;
+    }
+
+    /* 모바일 화면 */
+    @media (max-width: 480px) {
+        font-size: 8px;
+    }
 `;
 
 export const ColorPicker = styled.input`
@@ -30,6 +49,18 @@ export const MainGrid = styled.div`
     margin: 0 auto;
     border-radius: 15px;
     padding: 20px;
+    
+    /* 태블릿 및 작은 화면 */
+    @media (max-width: 768px) { 
+        grid-gap: 5px;
+        padding: 10px;
+    }
+    /* 모바일 화면 */
+    @media (max-width: 480px) { 
+        grid-gap: 3px;
+        padding: 5px;
+        max-width: 100%;
+    }
 `;
 
 // 서브 그리드 스타일 (각 3x3 셀)
@@ -39,6 +70,18 @@ export const SubGrid = styled.div`
     grid-gap: 10px;
     border-radius: 10px;
     padding: 10px;
+
+    /* 태블릿 및 작은 화면 */
+    @media (max-width: 768px) {
+        grid-gap: 5px;
+        padding: 8px;
+    }
+
+    /* 모바일 화면 */
+    @media (max-width: 480px) {
+        grid-gap: 3px;
+        padding: 5px;
+    }
 `;
 
 export const SubCellWrap = styled.div`
@@ -50,10 +93,21 @@ export const SubCellWrap = styled.div`
     border-radius: 5px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     background: #f1f1f1;
+    
     &:focus {
         border-color: #007bff;
         box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
         outline: none;
+    }
+
+    /* 태블릿 및 작은 화면 */
+    @media (max-width: 768px) {
+        height: 40px;
+    }
+
+    /* 모바일 화면 */
+    @media (max-width: 480px) {
+        height: 30px;
     }
 `
 // 서브 그리드의 각 셀 스타일 (텍스트 입력 가능)
@@ -77,5 +131,15 @@ export const SubCell = styled.textarea`
     
     &::placeholder {
         transform: translateY(5px);
+    }
+    
+    /* 태블릿 및 작은 화면 */
+    @media (max-width: 768px) { 
+        font-size: 10px;
+    }
+
+    /* 모바일 화면 */
+    @media (max-width: 480px) {
+        font-size: 8px;
     }
 `;

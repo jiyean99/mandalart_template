@@ -1,24 +1,36 @@
-import { toPng } from 'html-to-image';
+import {toPng} from 'html-to-image';
 import styled from "styled-components";
 
 const Button = styled.button`
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-family: 'Mungyeong-Gamhong-Apple';
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Mungyeong-Gamhong-Apple';
 
-  &:hover {
-    background-color: #0056b3;
-  }
+    &:hover {
+        background-color: #0056b3;
+    }
+
+    /* 태블릿 및 작은 화면 */
+    @media (max-width: 768px) {
+        padding: 10px 20px;
+        font-size: 12px;
+    }
+
+    /* 모바일 화면 */
+    @media (max-width: 480px) {
+        padding: 5px 8px;
+        font-size: 8px;
+    }
 `;
 
 const ExportButton = () => {
     const handleExport = () => {
-        const gridElement = document.getElementById('mandal-art-grid');
+        const gridElement = document.getElementById('mandalart-grid');
         if (gridElement) {
             toPng(gridElement)
                 .then((dataUrl) => {
