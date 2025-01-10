@@ -1,35 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import MandalArtGrid from './components/MandalArtGrid';
+import ExportButton from './components/ExportButton';
+import {ColorPicker, ColorPickerLabel, HeaderWrap} from "./styles/components.style.ts";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+    const [skinColor, setSkinColor] = useState('#a7c4e2'); // 기본 색상값 설정 #a7c4e2
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
 
-export default App
+    const handleSkinChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSkinColor(event.target.value); // 색상 변경 핸들러
+    };
+
+    return (
+        <div>
+            <HeaderWrap>
+                <ColorPickerLabel htmlFor="skin-selector">Select Skin Color:</ColorPickerLabel>
+                <ColorPicker type="color" id="skin-selector" value={skinColor} onChange={handleSkinChange}/>
+
+                <ExportButton />
+            </HeaderWrap>
+
+            <div id="mandal-art-grid">
+                {/* MandalArtGrid에 skinColor 전달 */}
+                <MandalArtGrid skinColor={skinColor} />
+            </div>
+        </div>
+    );
+};
+
+export default App;
